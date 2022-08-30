@@ -1,11 +1,9 @@
 import axios from "axios";
 import React, { useCallback, useState } from "react";
-import { Link } from "react-router-dom";
 
 type Props = {
   handleCloseModal: () => void;
   modalIsOpen: boolean;
-  googleLink: string;
 };
 
 const ModalStepThree: React.FC<Props> = ({ handleCloseModal, modalIsOpen }) => {

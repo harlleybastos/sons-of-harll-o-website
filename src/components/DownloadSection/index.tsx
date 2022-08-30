@@ -1,6 +1,4 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { GoogleLoginResponse } from "react-google-login";
-import useLocalStorage from "use-local-storage";
 import ModalStepOne from "./components/Modal/StepOne";
 import ModalStepThree from "./components/Modal/StepThree";
 import ModalStepTwo from "./components/Modal/StepTwo";
@@ -23,7 +21,6 @@ const DownloadSection: React.FC<Props> = ({
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [hasOverflow, setHasOverflow] = useState(true);
   const [currentStep, setCurrentStep] = useState(0);
-  const [googleLink, setGoogleLink] = useLocalStorage("googleLink", "");
 
   useEffect(() => {
     if (!hasOverflow) {
@@ -108,7 +105,6 @@ const DownloadSection: React.FC<Props> = ({
         <ModalStepThree
           handleCloseModal={handleCloseModal}
           modalIsOpen={modalIsOpen}
-          googleLink={googleLink}
         />
       )}
     </section>
