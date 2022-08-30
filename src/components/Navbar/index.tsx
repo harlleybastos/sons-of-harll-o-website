@@ -1,8 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
-import useScrollPosition from "../../hooks/useScroolPosition";
-
 import { Link } from "react-scroll";
+import useScrollPosition from "../../hooks/useScrollPosition";
 
 const Navbar: React.FC = () => {
   const buttonNavBarRef = useRef<HTMLButtonElement>(null);
@@ -91,14 +90,6 @@ const Navbar: React.FC = () => {
                     >
                       Mayans M.C
                     </Link>
-                  </li>
-                  <li className="relative group">
-                    <a
-                      href="#about"
-                      className="flex uppercase py-2 mx-8 text-base ud-menu-scroll text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12"
-                    >
-                      Contribuir
-                    </a>
                   </li>
                 </ul>
               </nav>

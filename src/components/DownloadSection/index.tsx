@@ -1,4 +1,9 @@
-import React from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { GoogleLoginResponse } from "react-google-login";
+import useLocalStorage from "use-local-storage";
+import ModalStepOne from "./components/Modal/StepOne";
+import ModalStepThree from "./components/Modal/StepThree";
+import ModalStepTwo from "./components/Modal/StepTwo";
 
 type Props = {
   source: string;
@@ -15,6 +20,32 @@ const DownloadSection: React.FC<Props> = ({
   mainText,
   id,
 }) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [hasOverflow, setHasOverflow] = useState(true);
+  const [currentStep, setCurrentStep] = useState(0);
+  const [googleLink, setGoogleLink] = useLocalStorage("googleLink", "");
+
+  useEffect(() => {
+    if (!hasOverflow) {
+      document.body.classList.add("over-hidden");
+    } else {
+      document.body.classList.remove("over-hidden");
+    }
+  }, [hasOverflow]);
+
+  const handleModal = useCallback(() => {
+    setModalIsOpen((oldState) => !oldState);
+    if (currentStep >= 0) {
+      setHasOverflow(false);
+    }
+  }, []);
+
+  const handleCloseModal = useCallback(() => {
+    setCurrentStep(0);
+    setHasOverflow(true);
+    setModalIsOpen(false);
+  }, []);
+
   return (
     <section
       id={id}
@@ -33,12 +64,16 @@ const DownloadSection: React.FC<Props> = ({
                     {mainText}
                   </p>
 
-                  <a className="inline-flex items-center justify-center rounded bg-dark py-4 px-6 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-90 hover:shadow-lg">
-                    Quero BAIXAR ou ASSISTIR !
-                  </a>
+                  <button
+                    className="bg-dark hover:bg-red-500 hover:text-black text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="button"
+                    onClick={handleModal}
+                  >
+                    Quero baixar / assistir !
+                  </button>
                 </div>
                 <div className="text-center">
-                  <div className="relative z-10 inline-block p-5 ">
+                  <div className="relative inline-block p-5 ">
                     <img
                       src={source}
                       alt="image"
@@ -51,6 +86,31 @@ const DownloadSection: React.FC<Props> = ({
           </div>
         </div>
       </div>
+      {currentStep === 0 && (
+        <ModalStepOne
+          handleModal={handleModal}
+          modalIsOpen={modalIsOpen}
+          setStep={setCurrentStep}
+          setHasOverflow={setHasOverflow}
+          handleCloseModal={handleCloseModal}
+        />
+      )}
+      {currentStep === 1 && (
+        <ModalStepTwo
+          setStep={setCurrentStep}
+          handleModal={handleModal}
+          modalIsOpen={modalIsOpen}
+          handleCloseModal={handleCloseModal}
+        />
+      )}
+
+      {currentStep === 2 && (
+        <ModalStepThree
+          handleCloseModal={handleCloseModal}
+          modalIsOpen={modalIsOpen}
+          googleLink={googleLink}
+        />
+      )}
     </section>
   );
 };

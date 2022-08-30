@@ -1,17 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
+
 import { MainContainer } from "./components/MainSection/styles";
-import JaxTeller from "./assets/img/Jax-Teller.jpg";
-import OpieWinston from "./assets/img/Opie-Winston.jpg";
-import Chibs from "./assets/img/Chibs.jpg";
-import Logo from "./assets/img/logo.png";
-import Hero from "./assets/img/hero.png";
+
 import Soa from "./assets/img/soa.jpg";
 
 import MayansMC from "./assets/img/mayans-mc.jpg";
 
 import Navbar from "./components/Navbar";
 import Section from "./components/Section";
-
 import About from "./components/About";
 import Testimonials from "./components/Testimonials";
 import DownloadSection from "./components/DownloadSection";

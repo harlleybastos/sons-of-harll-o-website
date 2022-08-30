@@ -34,7 +34,7 @@ const About = () => {
                   </a>
                 </div>
                 <div className="container text-center">
-                  <div className="relative z-10 inline-block">
+                  <div className="relative  inline-block">
                     <img
                       src={Logo}
                       alt="image"

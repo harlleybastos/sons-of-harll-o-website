@@ -46,11 +46,7 @@ const MainSection = () => {
           </div>
 
           <div className="w-full px-4">
-            <div
-              data-aos="fade-up"
-              className="relative z-10 mx-auto max-w-[845px]"
-              data-wow-delay=".25s"
-            >
+            <div data-aos="fade-up" className="relative mx-auto max-w-[845px]">
               <div className="mt-16"></div>
             </div>
           </div>

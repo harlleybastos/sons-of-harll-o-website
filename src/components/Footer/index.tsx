@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-scroll";
 import Logo from "../../assets/img/logo.png";
 
 const Footer = () => {
   return (
     <footer
-      className="wow fadeInUp relative z-10 bg-black pt-20 sm:flex-col flex justify-center "
+      className="wow fadeInUp relative  bg-black pt-20 sm:flex-col flex justify-center "
       data-wow-delay=".15s"
     >
       <div className="flex flex-wrap text-center">
@@ -63,24 +64,48 @@ const Footer = () => {
           <h4 className="mt-9 text-lg font-semibold text-white">Sobre-nos</h4>
           <ul className="flex gap-3 w-full justify-center">
             <li>
-              <a className="mb-2 inline-block text-base leading-loose text-[#f3f4fe] hover:text-primary">
-                Home
-              </a>
+              <Link
+                smooth={true}
+                duration={500}
+                spy={true}
+                to="about"
+                className="mb-2 cursor-pointer uppercase inline-block text-base leading-loose text-[#f3f4fe] hover:text-primary"
+              >
+                Sobre
+              </Link>
             </li>
             <li>
-              <a className="mb-2 inline-block text-base leading-loose text-[#f3f4fe] hover:text-primary">
-                Features
-              </a>
+              <Link
+                smooth={true}
+                duration={500}
+                spy={true}
+                to="soa"
+                className="mb-2 cursor-pointer uppercase inline-block text-base leading-loose text-[#f3f4fe] hover:text-primary"
+              >
+                Sons of Anarchy
+              </Link>
             </li>
             <li>
-              <a className="mb-2 inline-block text-base leading-loose text-[#f3f4fe] hover:text-primary">
-                About
-              </a>
+              <Link
+                smooth={true}
+                duration={500}
+                spy={true}
+                to="mayans"
+                className="mb-2 cursor-pointer uppercase inline-block text-base leading-loose text-[#f3f4fe] hover:text-primary"
+              >
+                Mayans M.C
+              </Link>
             </li>
             <li>
-              <a className="mb-2 inline-block text-base leading-loose text-[#f3f4fe] hover:text-primary">
-                Testimonial
-              </a>
+              <Link
+                smooth={true}
+                duration={500}
+                spy={true}
+                to="mayans"
+                className="mb-2 cursor-pointer uppercase inline-block text-base leading-loose text-[#f3f4fe] hover:text-primary"
+              >
+                Contribuir
+              </Link>
             </li>
           </ul>
         </div>
