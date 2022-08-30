@@ -7,20 +7,6 @@ type Props = {
 };
 
 const ModalStepThree: React.FC<Props> = ({ handleCloseModal, modalIsOpen }) => {
-  const googleLink = localStorage.getItem("googleLink");
-  const [googleSteps, setGoogleSteps] = useState({
-    1: false,
-    2: true,
-    3: true,
-  });
-
-  const handleGoogle = useCallback(async () => {
-    const { data } = await axios.get(
-      "https://sons-of-harllao-359923.rj.r.appspot.com/getAuthURL"
-    );
-    localStorage.setItem("googleLink", data);
-    setGoogleSteps({ 1: true, 2: false, 3: true });
-  }, []);
   return (
     <>
       {modalIsOpen && (
@@ -66,11 +52,9 @@ const ModalStepThree: React.FC<Props> = ({ handleCloseModal, modalIsOpen }) => {
                 <ul className="my-4 space-y-3">
                   <li>
                     <button
-                      onClick={handleGoogle}
-                      disabled={googleSteps[1]}
-                      className={`flex w-full ${
-                        googleSteps[1] && "cursor-not-allowed"
-                      } items-center p-3 text-base font-bold text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white`}
+                      onClick={() => {}}
+                      disabled
+                      className={`flex w-full items-center p-3 text-base font-bold text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white`}
                     >
                       <p className="bold">1 - </p>
 
@@ -81,25 +65,11 @@ const ModalStepThree: React.FC<Props> = ({ handleCloseModal, modalIsOpen }) => {
                   </li>
                   <li className="flex flex-col">
                     <button
-                      disabled={googleSteps[2]}
-                      className={`flex w-full ${
-                        googleSteps[2] && "cursor-not-allowed"
-                      } items-center p-3 text-base font-bold text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white`}
+                      disabled
+                      className={`flex w-full items-center p-3 text-base font-bold text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white`}
                     >
                       <p className="bold">2 - </p>
-                      {!googleLink ? (
-                        "Realizar liberação"
-                      ) : (
-                        <a
-                          href={`${googleLink.toString()}`}
-                          target="_blank"
-                          rel="external"
-                          className="flex-1 ml-3 whitesp ace-nowrap"
-                        >
-                          Acessar - Entre na sua conta Google e copie o code da
-                          URL
-                        </a>
-                      )}
+                      "Realizar liberação"
                     </button>
 
                     <input
@@ -114,25 +84,20 @@ const ModalStepThree: React.FC<Props> = ({ handleCloseModal, modalIsOpen }) => {
                   </li>
                   <li>
                     <button
-                      disabled={googleSteps[2]}
-                      className={`flex w-full ${
-                        googleSteps[2] && "cursor-not-allowed"
-                      } items-center p-3 text-base font-bold text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white`}
+                      disabled
+                      className={`flex w-full items-center p-3 text-base font-bold text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white`}
                     >
                       <p className="bold">2 - </p>
-                      {!googleLink ? (
-                        "Realizar liberação"
-                      ) : (
-                        <a
-                          href={`${googleLink.toString()}`}
-                          target="_blank"
-                          rel="external"
-                          className="flex-1 ml-3 whitesp ace-nowrap"
-                        >
-                          Acessar - Entre na sua conta Google e copie o code da
-                          URL
-                        </a>
-                      )}
+
+                      <a
+                        href="#"
+                        target="_blank"
+                        rel="external"
+                        className="flex-1 ml-3 whitesp ace-nowrap"
+                      >
+                        Acessar - Entre na sua conta Google e copie o code da
+                        URL
+                      </a>
                     </button>
                   </li>
                 </ul>
